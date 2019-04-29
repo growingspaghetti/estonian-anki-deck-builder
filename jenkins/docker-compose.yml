@@ -1,0 +1,13 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    volumes:
+      - ./local_jenkins_home:/var/jenkins_home
+    ports:
+      - "8090:8080"
+      - "50000:50000"
+    restart: always
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"
+    # sudo docker run -p 8090:8080 -p 50000:50000 -v `pwd`/local_jenkins_home:/var/jenkins_home jenkins/jenkins:lts

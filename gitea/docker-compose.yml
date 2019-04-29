@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    image: gitea/gitea:1.8
+    volumes:
+      - ./local-gitea-data:/data
+    ports:
+      - "3000:3000"
+      - "10022:22"
+    environment:
+      - TZ=Japan
+      - SSH_PORT=10022
+    restart: always
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"

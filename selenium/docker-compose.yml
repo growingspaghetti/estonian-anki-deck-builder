@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.0
+    ports:
+      - "4444:4444"
+    networks: [selenium-grid]
+    environment:
+      - GRID_BROWSER_TIMEOUT=3400
+      - GRID_TIMEOUT=3600
+  chrome-node:
+    image: selenium/node-chrome-debug:3.141.0
+    ports:
+      - "5900:5900"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: selenium-hub
+      HUB_PORT_4444_TCP_PORT: 4444
+    volumes:
+      - ./hub:/dev/random
+    networks: [selenium-grid]
+    links:
+      - selenium-hub:selenium-hub
+    depends_on:
+      - selenium-hub
+
+networks:
+  selenium-grid:
+    driver: bridge
+    external: false
+
