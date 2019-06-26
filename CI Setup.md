@@ -1,4 +1,4 @@
-# Example of Docker, Gitea+Jenkins, Selenium
+# Example of Docker, Gitea+Jenkins - webhook & pipeline, Selenium
 
 It is important to bind docker services running in localhost with DNS name `dockerhost` by the means of shell and the docker proxy.
 
@@ -161,6 +161,11 @@ Jenkins > Credentials > System
 ![jenkins-git-docker-host.png](./imgs/jenkins-git-docker-host.png)
 
 ### attach webhook
+
+Settings > Webhooks > Add Webhooks > Gitea
+
+![add-webhook.png](./imgs/add-webhook.png)
+
 ![gitea-gogs-webhook.png](./imgs/gitea-gogs-webhook.png)
 
 ### build (shell)
@@ -198,3 +203,14 @@ In dockered Jenkins, this address must be `dockerhost` instead of `127.0.0.1`
 ![sel-run.png](./imgs/sel-run.png)
 
 ![vnc-run.png](./imgs/vnc-run.png)
+
+# setup 3 (pipeline)
+
+## Gitea webhook
+
+```
+http://dockerhost:8090/gogs-webhook/?job=eesti-anki-pipeline
+```
+
+## Jenkins
+![jenkins-pipeline2.png](./imgs/jenkins-pipeline2.png)
