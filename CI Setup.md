@@ -179,7 +179,7 @@ for example,
 
 ![jenkins-mvn2.png](./imgs/jenkins-mvn2.png)
 
-
+![junit4.png](./imgs/junit4.png)
 
 ## selenium
 ![vnc.png](./imgs/vnc.png)
