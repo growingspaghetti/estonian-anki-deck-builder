@@ -180,6 +180,8 @@ for example,
 
 for example,
 
+Jenkins > Global Tool Configuration > Maven
+
 ![jenkins-mvn.png](./imgs/jenkins-mvn.png)
 
 ![jenkins-mvn2.png](./imgs/jenkins-mvn2.png)
@@ -213,4 +215,12 @@ http://dockerhost:8090/gogs-webhook/?job=eesti-anki-pipeline
 ```
 
 ## Jenkins
+
+Jenkins > Global Tool Configuration > JDK
+
+![jdk8.png](./imgs/jdk8.png)
+
+
 ![jenkins-pipeline2.png](./imgs/jenkins-pipeline2.png)
+
+
