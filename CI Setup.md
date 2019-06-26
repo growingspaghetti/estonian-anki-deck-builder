@@ -220,6 +220,9 @@ Jenkins > Global Tool Configuration > JDK
 
 ![jdk8.png](./imgs/jdk8.png)
 
+http://localhost:8090/descriptorByName/hudson.tools.JDKInstaller/enterCredential
+
+![oracle.png](./imgs/oracle.png)
 
 ![jenkins-pipeline2.png](./imgs/jenkins-pipeline2.png)
 
