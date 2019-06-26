@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+import org.hamcrest.core.StringContains;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -52,6 +53,7 @@ public class EestiLoecsenSeleniumTest {
                                   .executeScript("return jQuery(arguments[0]).text();", js);
 
                 System.out.println(code);
+                Assert.assertThat(code, StringContains.containsString("https://www.loecsen.com/OrizonFlash_V2"));
                 pages.add(code);
             }
         } finally {
