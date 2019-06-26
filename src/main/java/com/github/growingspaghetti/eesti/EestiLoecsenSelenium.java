@@ -149,7 +149,11 @@ public class EestiLoecsenSelenium {
                 throw new IllegalStateException("exception at img processing", ex);
             }
 
-            String l = String.format("%s\t<img src=\"%s\">\t%s\t[sound:%s]", en, png.getName(), ee, mp3.getName());
+            String l = String.format("%s\t<img src=\"%s\">\t%s\t[sound:%s]",
+                                     en,
+                                     png.getName(),
+                                     ee,
+                                     mp3.getName());
             tsv.add(l);
             System.out.println(en + "\n" + ee + "\n" + png.getName() + "\n" + mp3.getName());
         });
