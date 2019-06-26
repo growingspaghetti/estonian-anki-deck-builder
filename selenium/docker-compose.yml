@@ -9,6 +9,9 @@ services:
     environment:
       - GRID_BROWSER_TIMEOUT=3400
       - GRID_TIMEOUT=3600
+    restart: always
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"
   chrome-node:
     image: selenium/node-chrome-debug:3.141.0
     ports:
@@ -23,6 +26,7 @@ services:
       - selenium-hub:selenium-hub
     depends_on:
       - selenium-hub
+
 
 networks:
   selenium-grid:

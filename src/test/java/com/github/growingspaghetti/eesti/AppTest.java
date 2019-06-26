@@ -18,6 +18,14 @@ import org.junit.Test;
 import com.github.growingspaghetti.eesti.util.CsvUtils;
 
 public class AppTest {
+    @Test
+    public void testFoo() throws Exception {
+        System.out.println("    @Test\n"
+                           + "    public void testFoo() throws Exception {\n"
+                           + "        System.out.println(\"mvn test\");\n"
+                           + "    }");
+    }
+
     //@Test
     public void downloadResources() throws Exception {
         for (int i = 1; i < 19; i++) {
@@ -83,7 +91,7 @@ public class AppTest {
         FileUtils.writeLines(new File("loeesen/anki.txt"), "UTF-8", anki, false);
     }
 
-    @Test
+    //@Test
     public void mapEvalCodes() throws Exception {
         List<String[]> lines = CsvUtils.readCsv(new File("loeesen.csv"), ',');
         StringBuilder  sbMp3 = new StringBuilder();

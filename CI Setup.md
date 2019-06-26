@@ -85,21 +85,110 @@ services:
       - "dockerhost:$DOCKERHOST"
 ```
 
+## selenium
+
+![selenium.png](./imgs/selenium.png)
+
+```
+cd selenium
+./docker-run.sh
+```
+
+open localhost:4444
+
+```
+version: "3.3"
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.0
+    ports:
+      - "4444:4444"
+    networks: [selenium-grid]
+    environment:
+      - GRID_BROWSER_TIMEOUT=3400
+      - GRID_TIMEOUT=3600
+    restart: always
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"
+  chrome-node:
+    image: selenium/node-chrome-debug:3.141.0
+    ports:
+      - "5900:5900"
+    environment:
+      HUB_PORT_4444_TCP_ADDR: selenium-hub
+      HUB_PORT_4444_TCP_PORT: 4444
+    volumes:
+      - ./hub:/dev/random
+    networks: [selenium-grid]
+    links:
+      - selenium-hub:selenium-hub
+    depends_on:
+      - selenium-hub
+
+
+networks:
+  selenium-grid:
+    driver: bridge
+    external: false
+```
+
 # setup 2
 
 ## gitea
+
+![gitea_settings.png](./imgs/gitea_settings.png)
 
 ![gitea_account_key.png](./imgs/gitea_account_key.png)
 
 ## jenkins
 
-![jenkins-git-docker-host.png](./imgs/jenkins-git-docker-host.png)
-
+### install gog plugin
 https://plugins.jenkins.io/gogs-webhook
 
 ![jenkins-gogs.png](./imgs/jenkins-gogs.png)
 
+### git ssh credentials
+
+Jenkins > Credentials > System
+
+![jenkins-git-credentials.png](./imgs/jenkins-git-credentials.png)
+
+### git host
+ * use `dockerhost` as the DNS name.
+ * Credentials:`git`
+
+![jenkins-git-docker-host.png](./imgs/jenkins-git-docker-host.png)
+
+### attach webhook
 ![gitea-gogs-webhook.png](./imgs/gitea-gogs-webhook.png)
 
-# webhook
-# selenium
+### build (shell)
+
+for example,
+
+![jenkins-shell.png](./imgs/jenkins-shell.png)
+
+![jenkins-webhook-shell-output.png](./imgs/jenkins-webhook-shell-output.png)
+
+### build (maven)
+
+for example,
+
+## selenium
+![vnc.png](./imgs/vnc.png)
+
+```
+sudo snap install remmina
+snap run remmina
+localhost:5900 (VNC)
+User password: secret
+```
+
+Eclipse > run EestiLoecsenSelenium.java
+
+In dockered Jenkins, this address must be `dockerhost` instead of `127.0.0.1`
+
+![sel-run.png](./imgs/sel-run.png)
+
+![vnc-run.png](./imgs/vnc-run.png)

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  alpine:
+    image: alpine:3.4
+    volumes:
+      - ./local_jenkins_home:/var/jenkins_home
+    command: >
+      /bin/sh -c "mkdir /var/jenkins_home && chown 1000 /var/jenkins_home"
+  jenkins:
+    image: jenkins/jenkins:lts
+    volumes:
+      - ./local_jenkins_home:/var/jenkins_home
+    ports:
+      - "8090:8080"
+      - "50000:50000"
+    #environment:
+    #- TZ=Japan
+    #- SSH_PORT=10022
+    restart: always
+    depends_on:
+      - alpine
+    # sudo docker run -p 8090:8080 -p 50000:50000 -v `pwd`/jenkins_home:/var/jenkins_home jenkins/jenkins:lts
