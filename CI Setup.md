@@ -173,9 +173,13 @@ for example,
 
 ### build (maven)
 
+for example,
+
 ![jenkins-mvn.png](./imgs/jenkins-mvn.png)
 
-for example,
+![jenkins-mvn2.png](./imgs/jenkins-mvn2.png)
+
+
 
 ## selenium
 ![vnc.png](./imgs/vnc.png)
